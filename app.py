@@ -12,7 +12,7 @@ from api.hot_manhwa import hot_manhwa_bp
 from api.home import home_bp
 from flask_cors import CORS
 
-app = Flask(__name__, static_folder="static")
+app = Flask(__name__)
 
 CORS(app)
 
