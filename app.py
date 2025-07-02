@@ -12,7 +12,8 @@ from api.hot_manhwa import hot_manhwa_bp
 from api.home import home_bp
 from flask_cors import CORS
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="static")
+
 CORS(app)
 
 app.register_blueprint(rekomendasi_bp)
