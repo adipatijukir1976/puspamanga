@@ -9,7 +9,7 @@ home_bp = Blueprint('home_bp', __name__, url_prefix="/api")
 
 @home_bp.route('/home', methods=['GET'])
 def home():
-    result = [
+    data = [
         {
             "title": "🔥 Hot Manga",
             "items": scrape_hot_bge("manga", pages=2)
@@ -39,5 +39,27 @@ def home():
             "items": scrape_rekomendasi_bge()
         }
     ]
-    return jsonify(result)
+
+    menu = [
+        {
+            "name": "Manga",
+            "icon": "https://yourdomain.com/static/icons/manga.png",
+            "type": "manga"
+        },
+        {
+            "name": "Manhua",
+            "icon": "https://yourdomain.com/static/icons/manhua.png",
+            "type": "manhua"
+        },
+        {
+            "name": "Manhwa",
+            "icon": "https://yourdomain.com/static/icons/manhwa.png",
+            "type": "manhwa"
+        }
+    ]
+
+    return jsonify({
+        "menu": menu,
+        "sections": data
+    })
     
