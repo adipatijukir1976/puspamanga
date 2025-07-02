@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import send_from_directory
 from api.rekomendasi import rekomendasi_bp
 from api.manga import manga_bp
 from api.manhua import manhua_bp
@@ -27,6 +28,11 @@ app.register_blueprint(hot_manga_bp)
 app.register_blueprint(hot_manhua_bp)
 app.register_blueprint(hot_manhwa_bp)
 app.register_blueprint(home_bp)
+
+@app.route('/public/<path:filename>')
+def public_files(filename):
+    return send_from_directory('public', filename)
+
 
 if __name__ == "__main__":
     app.run()
