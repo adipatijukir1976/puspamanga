@@ -14,17 +14,17 @@ def home():
     menu = [
         {
             "name": "Manga",
-            "icon": f"{base_url}/static/icons/manga.png",
+            "icon": f"{base_url}/static/manga.png",
             "type": "manga"
         },
         {
             "name": "Manhua",
-            "icon": f"{base_url}/static/icons/manhua.png",
+            "icon": f"{base_url}/static/manhua.png",
             "type": "manhua"
         },
         {
             "name": "Manhwa",
-            "icon": f"{base_url}/static/icons/manhwa.png",
+            "icon": f"{base_url}/static/manhwa.png",
             "type": "manhwa"
         }
     ]
