@@ -136,3 +136,43 @@ def scrape_hot_bge(tipe="manga", pages=5):
 
     return results
 
+# 🔸 Untuk rekomendasi <div class="bge">
+def scrape_rekomendasi_bge():
+    url = "https://api.komiku.org/manga/?orderby=rand&genre&genre2&statusmanga&tipe"
+    html = cached_get(url)
+    soup = BeautifulSoup(html, "html.parser")
+
+    results = []
+    for div in soup.select("div.bge"):
+        try:
+            link = div.select_one(".bgei a")["href"]
+            title = div.select_one("h3").get_text(strip=True)
+            thumbnail = re.sub(r'\?resize=.*$', '', div.select_one("img")["src"])
+            type_genre = div.select_one(".tpe1_inf").get_text(strip=True).split(maxsplit=1)
+            tipe_komik = type_genre[0]
+            genre = type_genre[1] if len(type_genre) > 1 else ""
+            desc = div.select_one("p").get_text(strip=True)
+            chapter_awal = div.select("div.new1 a")[0]
+            chapter_terbaru = div.select("div.new1 a")[1]
+
+            results.append({
+                "title": title,
+                "type": tipe_komik,
+                "genre": genre,
+                "thumbnail": thumbnail,
+                "description": desc,
+                "link": link,
+                "chapter_awal": {
+                    "title": chapter_awal.get_text(strip=True).replace("Awal: ", ""),
+                    "url": chapter_awal["href"]
+                },
+                "chapter_terbaru": {
+                    "title": chapter_terbaru.get_text(strip=True).replace("Terbaru: ", ""),
+                    "url": chapter_terbaru["href"]
+                }
+            })
+        except Exception:
+            continue
+
+    return results
+
