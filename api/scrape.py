@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import re
 import time
 
-# Cache manual dengan timeout (opsional)
+# Manual cache
 _cache = {}
 _cache_timeout = 300  # detik
 
@@ -18,6 +18,7 @@ def cached_get(url):
     _cache[url] = (response.text, now)
     return response.text
 
+# 🔹 Untuk halaman utama daftar komik
 def parse_komiku_list(html):
     soup = BeautifulSoup(html, "html.parser")
     komik_list = []
@@ -53,7 +54,7 @@ def scrape_komik(tipe="manga"):
     html = cached_get(url)
     return parse_komiku_list(html)
 
-# ➕ Tambahan untuk scraping <div class="bge"> update terbaru
+# 🔸 Untuk update terbaru <div class="bge">
 def scrape_paginated_bge(tipe="manga", pages=5):
     results = []
     for page in range(1, pages + 1):
