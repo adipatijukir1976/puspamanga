@@ -1,0 +1,9 @@
+{
+  "aplikasi": [
+    {
+      "nama": "chapzee",
+      "deploy": "vercel",
+      "tipe": "https://"
+    }
+  ]
+}
