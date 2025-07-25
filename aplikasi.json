@@ -3,7 +3,8 @@
     {
       "nama": "chapzee",
       "deploy": "vercel",
-      "tipe": "https://"
+      "tipe": "https://",
+      "icon": "https://raw.githubusercontent.com/adipatijukir1976/puspamanga/refs/heads/main/icon.png"
     }
   ]
 }
