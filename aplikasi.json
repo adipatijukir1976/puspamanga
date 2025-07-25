@@ -4,7 +4,8 @@
       "nama": "chapzee",
       "deploy": "vercel",
       "tipe": "https://",
-      "icon": "https://raw.githubusercontent.com/adipatijukir1976/puspamanga/refs/heads/main/icon.png"
+      "icon": "https://raw.githubusercontent.com/adipatijukir1976/puspamanga/refs/heads/main/icon.png",
+      "powered": "Powered by\nBojonegoro Developer"
     }
   ]
 }
